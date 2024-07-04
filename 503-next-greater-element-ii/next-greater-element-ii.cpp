@@ -7,8 +7,10 @@ public:
        vector<int>Greater_ele(n,-1);
        for(int i=2*n-1;i>=0;i--)
        {
-        while(!S.empty() && S.top()<=nums[i%n]) S.pop();
-        Greater_ele[i%n] = S.empty() ? -1 : S.top();
+        while(!S.empty() && S.top()<=nums[i%n])
+        S.pop();       
+        if(!S.empty())
+        Greater_ele[i%n] = S.top();
         S.push(nums[i%n]);
        }  
        return Greater_ele;
