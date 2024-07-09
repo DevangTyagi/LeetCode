@@ -39,8 +39,8 @@ public:
        long long ans=0;
        long long mod = 1e9+7;
        int n = arr.size();
-       vector<int>NSL = Find_NSL(arr,n); // Next smaller element in left array
-       vector<int>NSR = Find_NSR(arr,n); //Next smaller element in right array
+       vector<int>NSL = Find_NSL(arr,n); // Array of Next smaller element in left 
+       vector<int>NSR = Find_NSR(arr,n); //Array of Next smaller element in right 
        for(int i=0;i<n;i++)
        {
         long long left_count = i-NSL[i];
