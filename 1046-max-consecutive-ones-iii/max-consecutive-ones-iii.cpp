@@ -15,7 +15,7 @@ public:
             } 
             l++;
            }  
-           if(zeroes<=k){
+           if(zeroes<=k){    //Condition <= is is used instesd of == because it will include the substring which may have length of larger than all but use less zeroes than k
             maxlen=max(maxlen,r-l+1);
            }      
            r++;   
