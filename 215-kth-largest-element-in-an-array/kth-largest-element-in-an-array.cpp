@@ -8,11 +8,10 @@ public:
         {
             pq.push(nums[i]);
         }
-        for(int i=0;i<k;i++)
+        for(int i=0;i<k-1;i++)
         {
-            ans = pq.top();
             pq.pop();
         }
-        return ans;
+        return pq.top();
     }
 };
