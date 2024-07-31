@@ -10,33 +10,26 @@
  */
 class Solution {
 public:
-struct comp
-{
-        bool operator()(ListNode *a,ListNode*b)
-        {
-            return a->val>b->val;
-        }
-};
     ListNode* mergeKLists(vector<ListNode*>& lists) 
     {
-        priority_queue< ListNode* , vector<ListNode*> , comp >pq;
-        ListNode *dummynode = new ListNode(-1);
-        ListNode *temp = dummynode;
+        priority_queue< pair<int,ListNode*> , vector<pair<int,ListNode*>> , greater<pair<int,ListNode*>>>pq;
+        ListNode *dummynode= new ListNode(-1);
+        ListNode*temp=dummynode;
         int n = lists.size();
         for(int i=0;i<n;i++)
         {
             if(lists[i])   //To check if the Node is having a value.If it is empty it is not considered
             {
-            pq.push(lists[i]);
+            pq.push({lists[i]->val , lists[i]});
             }
         }
         while(!pq.empty())
         {
             auto itr = pq.top();
             pq.pop();
-            temp->next = itr;           
-            if(itr->next)
-            pq.push(itr->next);
+            temp->next=itr.second;         
+            if(itr.second->next)
+            pq.push({itr.second->next->val ,itr.second->next });
             temp=temp->next;
         }
         return dummynode->next;
