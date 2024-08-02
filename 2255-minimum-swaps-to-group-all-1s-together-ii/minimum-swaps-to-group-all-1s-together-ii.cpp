@@ -14,7 +14,7 @@ public:
         {
             if(nums[r%nums.size()]==0)
             swap++;
-            while(r-l+1>ones)
+            if(r-l+1>ones)
             {
                 if(nums[l%nums.size()]==0)
                 swap--;
