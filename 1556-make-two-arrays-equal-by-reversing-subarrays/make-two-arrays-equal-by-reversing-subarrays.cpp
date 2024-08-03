@@ -4,8 +4,6 @@ public:
     {
        sort(target.begin(),target.end()); 
        sort(arr.begin(),arr.end()); 
-       if(arr==target)
-       return 1;
-       return 0;
+       return arr==target;
     }
 };
