@@ -9,12 +9,12 @@ public:
       }
       sort(keys.begin(),keys.end(),greater<int>());
       
-      int i=1,count=0;
+      int i=0,count=0;
       for(auto itr : keys)
       {
-        if(i>=1 && i<=8) count += itr*1;
-        else if(i>=9 && i<=16) count += itr*2;
-        else if(i>=17 && i<=24) count += itr*3;
+        if(i>=0 && i<=7) count += itr*1;
+        else if(i>=8 && i<=15) count += itr*2;
+        else if(i>=16 && i<=23) count += itr*3;
         else count += itr*4;
         i++;
       }
