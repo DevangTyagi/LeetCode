@@ -7,16 +7,13 @@ public:
         sort(g.begin(),g.end());
         sort(s.begin(),s.end());
         if(s.size()==0)  return 0;
-        while(i<g.size())
+        while(i<g.size() && j<s.size())
         {
-            if(j==s.size()) break;
             if(s[j]>=g[i])
             {
                 count++;
                 i++;
-                j++;
             }
-            else 
             j++;
         }
         return count;
