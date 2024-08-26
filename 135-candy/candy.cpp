@@ -4,22 +4,33 @@ public:
     {
         int n = ratings.size();
         if(n == 1) return 1;
-        vector<int> candies(n, 1);
-        for(int i = 1; i < n; i++) {
-            if(ratings[i] > ratings[i - 1]) {
-                candies[i] = candies[i - 1] + 1;
+        int sum = 1;
+        int i=1;
+         
+        while(i<n)
+        {
+            if(ratings[i] == ratings[i-1])
+            {
+                sum++;
+                i++;
+                continue;
             }
-        }
-        for(int i = n - 2; i >= 0; i--) {
-            if(ratings[i] > ratings[i + 1]) {
-                candies[i] = max(candies[i], candies[i + 1] + 1);
+            int peak = 1;
+            while(i<n && ratings[i] > ratings[i-1])
+            {
+                peak++;
+                sum += peak;
+                i++;
             }
+            int down = 1;
+            while(i<n && ratings[i] < ratings[i-1])   // down is used to find peak of downward slope in reverse direction i.e from up to down
+            {               
+                sum += down;
+                down++;
+                i++;
+            }
+            if(down > peak) sum += (down - peak);
         }
-        int totalCandies = 0;
-        for(int i = 0; i < n; i++) {
-            totalCandies += candies[i];
-        }
-
-        return totalCandies;
+        return sum;
     }
 };
