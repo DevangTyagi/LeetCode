@@ -22,7 +22,7 @@ public:
     int diameterOfBinaryTree(TreeNode* root) 
     {
        int ans = 0;
-       Height(root,ans);
+       int temp = Height(root,ans);
        return ans;
     }
 };
