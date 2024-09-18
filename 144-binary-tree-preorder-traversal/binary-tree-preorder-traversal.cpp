@@ -11,20 +11,34 @@
  */
 class Solution {
 public:
-    vector<int> preorderTraversal(TreeNode* root) 
-    {
-        vector<int>ans;
-        stack<TreeNode*>st;
-        if(root == nullptr) return ans;
-        st.push(root);
-        while(!st.empty())
-        {
-            TreeNode*temp = st.top();
-            st.pop();
-            if(temp->right != nullptr) st.push(temp->right);
-            if(temp->left != nullptr) st.push(temp->left);
-            ans.push_back(temp->val);
+    vector<int> preorderTraversal(TreeNode* root) {
+        // Morris Traversal
+     vector<int>ans;
+     if(root==nullptr)
+     return ans;
+     TreeNode*curr = root;
+     while(curr != nullptr)
+     {
+        if(curr->left == nullptr){
+            ans.push_back(curr->val);
+            curr = curr->right;
         }
-        return ans;
+        else{
+            TreeNode*node = curr->left;
+            while(node->right && node->right != curr){
+                node=node->right;
+            }
+            if(node->right==nullptr){
+                node->right = curr;    //Creating a new Thread
+                ans.push_back(curr->val);
+                curr = curr->left;
+            }
+            else{
+                node->right = nullptr;  // Breaking the thread if already exist
+                curr = curr->right;
+            }
+        }
+     }   
+     return ans;
     }
 };
