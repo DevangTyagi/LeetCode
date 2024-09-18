@@ -11,18 +11,35 @@
  */
 class Solution {
 public:
-    void Inorder(TreeNode*root , vector<int>&ans)
+    vector<int> inorderTraversal(TreeNode* root) 
     {
-        if(root==nullptr)
-        return;
-        Inorder(root->left,ans);
-        ans.push_back(root->val);
-        Inorder(root->right,ans);
-    }
-    vector<int> inorderTraversal(TreeNode* root)
-    {
-      vector<int>ans;
-      Inorder(root,ans);
-      return ans;  
+     // Morris Traversal
+     vector<int>ans;
+     if(root==nullptr)
+     return ans;
+     TreeNode*curr = root;
+     while(curr != nullptr)
+     {
+        if(curr->left == nullptr){
+            ans.push_back(curr->val);
+            curr = curr->right;
+        }
+        else{
+            TreeNode*node = curr->left;
+            while(node->right && node->right != curr){
+                node=node->right;
+            }
+            if(node->right==nullptr){
+                node->right = curr;    //Creating a new Thread
+                curr = curr->left;
+            }
+            else{
+                node->right = nullptr;
+                ans.push_back(curr->val);
+                curr = curr->right;
+            }
+        }
+     }   
+     return ans;
     }
 };
