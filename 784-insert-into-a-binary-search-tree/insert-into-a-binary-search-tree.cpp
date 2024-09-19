@@ -20,26 +20,20 @@ public:
         TreeNode*temp = root;
         while(temp)
         {
-            if(temp->val > val)
-            {
+            if(temp->val > val){
                if(temp->left)
                temp=temp->left;
-               else
-               {
-                TreeNode*node = new TreeNode(val);
-                temp->left=node;
-                return root;
+               else{
+                temp->left = new TreeNode(val);;
+                break;
                }
             }
-            else
-            {
+            else{
                if(temp->right)
                temp=temp->right;
-               else
-               {
-                TreeNode*node = new TreeNode(val);
-                temp->right=node;
-                return root;
+               else{
+                temp->right=new TreeNode(val);
+                break;
                }
             }
         }
