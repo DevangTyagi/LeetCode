@@ -11,20 +11,17 @@
  */
 class Solution {
 public:
-    TreeNode*Solve(vector<int>& preorder,int &i,int bound)
+    TreeNode*Solve(vector<int>& preorder,int &i ,int lower , int upper)
     {
-       if(i==preorder.size() || preorder[i] > bound)
-       return nullptr;
-       TreeNode*root = new TreeNode(preorder[i]);
-       i++;
-       root->left = Solve(preorder,i,root->val);
-       root->right = Solve(preorder,i,bound);
-       return root;
+        if(i==preorder.size() || preorder[i]<lower || preorder[i]>upper)
+        return nullptr;
+        TreeNode*root = new TreeNode(preorder[i++]);
+        root->left = Solve(preorder,i,lower,root->val);
+        root->right = Solve(preorder,i,root->val,upper);
+        return root;
     }
-    TreeNode* bstFromPreorder(vector<int>& preorder) 
-    {
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
         int i=0;
-        int bound = INT_MAX;
-        return Solve(preorder,i,bound);       
+       return Solve(preorder,i,INT_MIN,INT_MAX);
     }
 };
