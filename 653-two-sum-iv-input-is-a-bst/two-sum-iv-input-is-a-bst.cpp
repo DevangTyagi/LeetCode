@@ -27,9 +27,10 @@ public:
         int low=0 , high=ans.size()-1;
         while(low<high)
         {
-            if(ans[low]+ans[high] == k)
+            int sum = ans[low]+ans[high];
+            if(sum == k)
             return true;
-            if(ans[low]+ans[high] < k)
+            else if(sum < k)
             low++;
             else
             high--;
