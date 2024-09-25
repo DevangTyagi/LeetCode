@@ -21,7 +21,7 @@ private:
       if(root == nullptr)
       return;
       Inorder(root->left);
-      if(root->val < prev->val)
+      if(prev!=nullptr && root->val < prev->val)
       {
         if(first == nullptr){
             first = prev;
