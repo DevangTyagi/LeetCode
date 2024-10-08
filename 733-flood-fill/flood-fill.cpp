@@ -4,13 +4,8 @@ public:
     {
         int n = image.size();
         int m = image[0].size();
-        vector<vector<int>> visited( n , vector<int>(m)); 
+        vector<vector<int>> visited = image; 
         queue<pair<int,int>>q;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                visited[i][j]=image[i][j];
-            }
-        }
         int org_color = image[sr][sc];
         visited[sr][sc]=color;
         q.push({sr,sc});
