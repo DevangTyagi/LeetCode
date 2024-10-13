@@ -4,7 +4,7 @@ public:
         vector<vector<int>> adj(numCourses);
         vector<int> visited(numCourses, 0);
         
-        for (auto& pre : prerequisites) {
+        for (auto pre : prerequisites) {
             int course = pre[0];
             int prereq = pre[1];
             adj[prereq].push_back(course);
