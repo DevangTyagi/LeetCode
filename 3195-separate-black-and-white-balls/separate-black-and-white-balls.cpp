@@ -8,7 +8,7 @@ public:
       {
          if(s[i]=='0')
          count++;
-         if(s[i]=='1')
+         else
          ans += count;
       }
       return ans;
