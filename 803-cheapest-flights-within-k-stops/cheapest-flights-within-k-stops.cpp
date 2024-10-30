@@ -24,7 +24,7 @@ public:
         {
           int adj_node = itr.first;
           int new_dis = itr.second;
-          if(new_dis + cost < dist[adj_node]  && stops <= k){
+          if(new_dis + cost < dist[adj_node] ){
             dist[adj_node] = new_dis + cost;
             q.push({stops + 1 , { adj_node , new_dis + cost }});
           }
