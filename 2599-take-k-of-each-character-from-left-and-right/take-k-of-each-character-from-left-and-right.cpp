@@ -11,8 +11,7 @@ public:
       return 0;
       if (mpp['a'] < k || mpp['b'] < k || mpp['c'] < k)
       return -1;
-      int i=0;
-      int j = 0;
+      int i=0,j = 0;
       while(j < s.size() && i < s.size()){
        freq[s[j]]++;
        while(freq[s[j]] > mpp[s[j]] - k && i < s.size()){
