@@ -20,6 +20,7 @@ public:
       queue<string>q;
       unordered_set<string>visited;
       q.push(curr);
+      visited.insert(curr);
       while(!q.empty()){
         int size = q.size();
         for(int i = 0;i < size;i++){
