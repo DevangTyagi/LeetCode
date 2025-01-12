@@ -1,30 +1,30 @@
 class Solution {
 public:
     bool canBeValid(string s, string locked) {
-      if(s.size()%2 != 0)
-       return false;
-      stack<int>flexi;
-      stack<int>open;
-      for(int i=0;i<s.size();i++){ 
-         if(locked[i] == '0')
-            flexi.push(i);
-         else if(s[i] == '('){
-            open.push(i);
-         }
-         else {
-            if(!open.empty() && s[i] == ')')
-            open.pop();
-            else if( open.empty() && !flexi.empty() && s[i] == ')' )
-            flexi.pop();
-            else
-            return false;
-         }
-      }
-       while(!open.empty() && !flexi.empty() && flexi.top() > open.top()){
-            open.pop();
-            flexi.pop();
+        int n = s.size();
+        if( n % 2 != 0)
+        return false;
+        int open=0,close=0;
+        for(int i=0;i<n;i++){
+         if(s[i] == '(' || locked[i] == '0')
+         open++;
+         else{
+             open--;
+             if(open < 0)
+             return false;
+         }   
         }
-       
-      return open.empty();
+
+        for(int i=n-1;i>=0;i--){
+         if(s[i] == ')' || locked[i] == '0')
+         close++;
+         else{
+             close--;
+             if(close < 0)
+             return false;
+         }   
+        }
+
+        return true;
     }
 };
