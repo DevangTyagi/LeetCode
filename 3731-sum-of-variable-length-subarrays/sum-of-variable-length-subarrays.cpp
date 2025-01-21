@@ -5,10 +5,8 @@ public:
         for(int i=0;i<nums.size();i++){
             int start = max(0,i-nums[i]);
             int temp_sum=0;
-            if(start<=i){
-                for(int j=start;j<=i;j++)
-                temp_sum += nums[j];
-            }
+            for(int j=start;j<=i;j++)
+            temp_sum += nums[j];
             maxsum += temp_sum;
         }
         return maxsum;
