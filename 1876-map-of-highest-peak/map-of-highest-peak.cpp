@@ -16,20 +16,23 @@ public:
                 }
             }
         }
-        int def_row[] = {-1,0,1,0};
-        int def_col[] = {0,1,0,-1};
+        int def_row[] = {0,1,0,-1};
+        int def_col[] = {1,0,-1,0};
         while(!q.empty()){
+          int size = q.size();
+          for(int i=0;i<size;i++){
             int row = q.front().first;
             int col = q.front().second;
             q.pop();
             for(int j=0;j<4;j++){
                 int n_row = row + def_row[j];
                 int n_col = col + def_col[j];
-                if(n_row >= 0 && n_row < m && n_col >= 0 && n_col < n && visited[n_row][n_col] == 0){
+                if(n_row >= 0 && n_row<m && n_col>=0 && n_col < n && visited[n_row][n_col] != 1){
                     visited[n_row][n_col] = 1;
                     heights[n_row][n_col] = heights[row][col] + 1;
                     q.push({n_row,n_col});
                 }
+            }
           }
         }
         return heights;
