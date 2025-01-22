@@ -19,8 +19,6 @@ public:
         int def_row[] = {0,1,0,-1};
         int def_col[] = {1,0,-1,0};
         while(!q.empty()){
-          int size = q.size();
-          for(int i=0;i<size;i++){
             int row = q.front().first;
             int col = q.front().second;
             q.pop();
@@ -32,7 +30,6 @@ public:
                     heights[n_row][n_col] = heights[row][col] + 1;
                     q.push({n_row,n_col});
                 }
-            }
           }
         }
         return heights;
