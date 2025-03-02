@@ -2,23 +2,31 @@ class Solution {
 public:
     int largestInteger(vector<int>& nums, int k) {
         int n = nums.size();
-        if (n < k)
-            return -1;
-             unordered_map<int, unordered_set<int>> subarrayIndices;
-
-        for (int i = 0; i <= n - k; i++) {
-            for (int j = i; j < i + k; j++) {
-                subarrayIndices[nums[j]].insert(i);
+        unordered_map<int, int> mpp;
+        for (auto& itr : nums)
+            mpp[itr]++;
+        if (k == 1) {
+            int solo_unq = -1;
+            for (auto& [key, count] : mpp) {
+                if (count == 1)
+                    solo_unq = max(key, solo_unq);
             }
+            return solo_unq;
         }
 
-        int result = -1;
-        for (auto& [num, indices] : subarrayIndices) {
-            if (indices.size() == 1) {
-                result = max(result, num);
-            }
-        }
+        if (k == n)
+            return *max_element(nums.begin(), nums.end());
 
-        return result;
+        bool first_unq = (mpp[nums[0]] == 1);
+        bool second_unq = (mpp[nums[n - 1]] == 1);
+
+        if (first_unq && second_unq)
+            return max(nums[0], nums[n - 1]);
+        if (first_unq)
+            return nums[0];
+        if (second_unq)
+            return nums[n - 1];
+
+        return -1;
     }
 };
