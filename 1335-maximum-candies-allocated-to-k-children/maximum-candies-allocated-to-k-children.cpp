@@ -17,8 +17,6 @@ public:
         long long sum = accumulate(candies.begin(), candies.end(), 0LL);
         if (sum < k)
             return 0;
-        if (solve(candies, k, r) >= k)
-            return r;
         while (l <= r) {
             int mid = l + (r - l) / 2;
             if (solve(candies, k, mid) >= k) {
